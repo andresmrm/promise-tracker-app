@@ -23,7 +23,7 @@ except FileNotFoundError:
 
 @app.route("/")
 def list():
-    return render_template('list.html', registers=received)
+    return render_template('list.html', registers=received.reverse())
 
 
 @app.route("/post", methods=['POST'])
