@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # coding: utf-8
 
+import os
 import pickle
 import datetime
 from flask import (Flask, request, render_template, send_file,
@@ -11,8 +12,10 @@ app.config['TEMPLATES_AUTO_RELOAD'] = True
 app.config['PROPAGATE_EXCEPTIONS'] = True
 app.jinja_env.line_statement_prefix = '#'
 
+datadir = os.environ['OPENSHIFT_DATA_DIR']
+
 try:
-    with open('data', 'rb') as f:
+    with open(os.path.join(datadir, 'data'), 'rb') as f:
         received = pickle.load(f)
 except FileNotFoundError:
     received = []
@@ -28,7 +31,7 @@ def receive():
     for item in request.get_json():
         item['date'] = datetime.datetime.now().strftime('%c')
         received.append(item)
-    with open('data', 'wb') as f:
+    with open(os.path.join(datadir, 'data'), 'wb') as f:
         pickle.dump(received, f)
     return '{}'
 
