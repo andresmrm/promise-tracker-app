@@ -1,0 +1,48 @@
+<!doctype html>
+<!-- TODO: servir manifest com mime: text/cache-manifest -->
+<html manifest="manifest2" class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Teste</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- <link rel="apple-touch-icon" href="apple-touch-icon.png"> -->
+        <!-- Place favicon.ico in the root directory -->
+
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+        <!-- <link rel="stylesheet" href="css/normalize.css"> -->
+        <!-- <link rel="stylesheet" href="css/main.css"> -->
+    </head>
+    <body>
+        <!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+
+        <h1>TESTES</h1>
+
+        <h2>Teste de foto através de UserMedia ou UserDevice</h2>
+        <div id="pic1">
+        </div>
+
+        <h2>Teste de foto através de Input</h2>
+        <p>Clique no botão para tirar a foto. Caso ele pergunte com que abrir, escolha um aplicativo de câmera. Caso não tenha essa opção, escolha Android System ou algo assim.</p>
+        <input id="pic2" type="file" accept="image/*;capture=camera">
+        <!-- <button id="loadpic">Load</button> -->
+
+        <h2>Teste de localização</h2>
+        <p>
+            Localização:
+            <span id="location">???</span>
+        </p>
+        <button id="getloc">Pegar localização</button>
+
+        <h2>Salvar e Enviar</h2>
+        <p>Primeiro salve e depois envie!</p>
+        <button id="savedata">Salvar Dados</button>
+        <button id="senddata">Enviar Dados</button>
+
+        <script src="main.js"></script>
+    </body>
+</html>

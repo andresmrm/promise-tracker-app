@@ -1,0 +1,40 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Lista</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- <link rel="apple-touch-icon" href="apple-touch-icon.png"> -->
+        <!-- Place favicon.ico in the root directory -->
+
+        <!-- <link rel="stylesheet" href="css/normalize.css"> -->
+        <!-- <link rel="stylesheet" href="css/main.css"> -->
+    </head>
+    <body>
+        # for register in registers:
+            <div>
+                <div>
+                    Data: {{register['date']}}
+                </div>
+                <div>
+                    UserAgent: {{register['userAgent']}}
+                </div>
+                <div>
+                    Localização: {{register['location']}}
+                </div>
+                <div>
+                    Img1:
+                    <img src="{{register['img1']}}" width="300px"></img>
+                </div>
+                <div>
+                    Img2:
+                    <img src="{{register['img2']}}" width="300px"></img>
+                </div>
+            </div>
+            <hr>
+        # endfor
+    </body>
+</html>
