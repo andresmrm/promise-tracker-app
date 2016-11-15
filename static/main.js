@@ -20,15 +20,16 @@ function getLoc() {
 }
 document.getElementById("getloc").addEventListener("click", getLoc)
 
-
 // Foto1
 if ((navigator.mediaDevices && navigator.mediaDevices.getUserMedia) || navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia) {
     function getPic() {
         // Grab elements, create settings, etc.
         var video = document.getElementById('video')
 
+        alert('qual?')
         // Get access to the camera!
         if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+            alert('mediaDevices!')
             // Not adding `{ audio: true }` since we only want video now
             navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
                 video.src = window.URL.createObjectURL(stream)
@@ -37,26 +38,26 @@ if ((navigator.mediaDevices && navigator.mediaDevices.getUserMedia) || navigator
             })
         }
         else if(navigator.getUserMedia) { // Standard
+            alert('userMedia!')
             navigator.getUserMedia({ video: true }, function(stream) {
                 video.src = stream
                 video.play()
                 window.mystream = stream
             }, errBack)
         } else if(navigator.webkitGetUserMedia) { // WebKit-prefixed
+            alert('webkitUserMedia!')
             navigator.webkitGetUserMedia({ video: true }, function(stream){
                 video.src = window.webkitURL.createObjectURL(stream)
                 video.play()
                 window.mystream = stream
             }, errBack)
         } else if(navigator.mozGetUserMedia) { // Mozilla-prefixed
+            alert('mozUserMedia!')
             navigator.mozGetUserMedia({ video: true }, function(stream){
                 video.src = window.URL.createObjectURL(stream)
                 video.play()
                 window.mystream = stream
             }, errBack)
-        } else {
-            // Remove elements if not supported
-            document.getElementById('foto1').innerHTML = ''
         }
     }
     var els = '<button id="getpic">Ligar câmera</button> <video id="video" width="300" height="300" autoplay></video> <button id="snap">Tirar foto</button> <canvas id="canvas" width="300" height="300"></canvas>'
@@ -120,6 +121,7 @@ function saveData() {
         stored.push(register)
         alert('Salvo! - Total: ' + stored.length + ' itens')
         localStorage.setItem('registers', JSON.stringify(stored))
+        updateNumReg()
     } else {
         alert('Sem localStorage!')
     }
@@ -138,8 +140,24 @@ function sendData() {
     }).done(function () {
         alert("Enviado!")
 	      localStorage.removeItem('registers')
+        updateNumReg()
     }).fail(function () {
         alert('Erro!')
     })
 }
 document.getElementById("senddata").addEventListener("click", sendData)
+
+function clearData() {
+	  localStorage.removeItem('registers')
+    updateNumReg()
+}
+document.getElementById("cleardata").addEventListener("click", clearData)
+
+function updateNumReg() {
+    var stored = localStorage.getItem('registers')
+    var num = 0
+    if (stored) num = JSON.parse(stored).length
+    document.getElementById("numReg").innerHTML = num
+}
+
+updateNumReg()
