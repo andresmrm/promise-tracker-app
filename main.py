@@ -12,7 +12,9 @@ app.config['TEMPLATES_AUTO_RELOAD'] = True
 app.config['PROPAGATE_EXCEPTIONS'] = True
 app.jinja_env.line_statement_prefix = '#'
 
-datadir = os.environ['OPENSHIFT_DATA_DIR']
+datadir = os.environ.get('OPENSHIFT_DATA_DIR')
+if not datadir:
+    datadir = '.'
 
 try:
     with open(os.path.join(datadir, 'data'), 'rb') as f:
