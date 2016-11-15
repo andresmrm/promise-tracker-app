@@ -11,7 +11,7 @@ setup(
     author_email='andres@inventati.org',
     url='https://github.com/andresmrm/promise-tracker-app',
     packages=["tracker"],
-    install_requires=['Flask>=0.7.2', 'MarkupSafe'],
+    # install_requires=['Flask>=0.7.2', 'MarkupSafe'],
     keywords=[],
     classifiers=[]
 )
