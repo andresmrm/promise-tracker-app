@@ -12,6 +12,8 @@
         <!-- Place favicon.ico in the root directory -->
 
         <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+        <script src="webcam.min.js"></script>
+        <script src="webcam.swf"></script>
         <!-- <link rel="stylesheet" href="css/normalize.css"> -->
         <!-- <link rel="stylesheet" href="css/main.css"> -->
     </head>
@@ -20,15 +22,37 @@
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
         <![endif]-->
 
-        <h1>Testador4</h1>
+        <h1>Testador8</h1>
 
         <h2>Teste de foto através de UserMedia ou UserDevice</h2>
+
+
+
+        <div id="my_camera" style="width:320px; height:240px;"></div>
+        <div id="my_result"></div>
+        <script language="JavaScript">
+            function takeSnapshot() {
+                Webcam.snap( function(data_uri) {
+                    document.getElementById('my_result').innerHTML = '<img id="webcampic" src="'+data_uri+'"/>';
+                } );
+            }
+            function turnOnWebcam() {
+                Webcam.attach('#my_camera');
+            }
+        </script>
+        <a href="javascript:void(turnOnWebcam())">Turn On Webcam</a>
+        <a href="javascript:void(takeSnapshot())">Take Snapshot</a>
+        <a href="javascript:void(turnoffPic1())">Turn Off Webcam</a>
+
+
+
         <div id="pic1">
         </div>
 
         <h2>Teste de foto através de Input</h2>
         <p>Clique no botão para tirar a foto. Caso ele pergunte com que abrir, escolha um aplicativo de câmera. Caso não tenha essa opção, escolha Android System ou algo assim.</p>
         <input id="pic2" type="file" accept="image/*;capture=camera">
+        <img id="pic2img" width="300"></img>
         <!-- <button id="loadpic">Load</button> -->
 
         <h2>Teste de localização</h2>

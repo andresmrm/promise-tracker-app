@@ -1,9 +1,11 @@
 CACHE MANIFEST
-# v12
+# v14
 
 app
 main.js
 https://code.jquery.com/jquery-1.12.4.min.js
+webcam.min.js
+webcam.swf
 
 NETWORK:
 *

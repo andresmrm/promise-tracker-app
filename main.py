@@ -51,7 +51,7 @@ def manifest():
 
 @app.route('/<path:path>')
 def arquivos(path):
-    return send_from_directory('static', path)
+    return send_from_directory('static', path, cache_timeout=0)
 
 if __name__ == "__main__":
     app.run(host='10.0.0.11', debug=True)
